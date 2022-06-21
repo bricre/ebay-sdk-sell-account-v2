@@ -4,6 +4,7 @@ namespace Ebay\Sell\Account\V2\Api;
 
 use Ebay\Sell\Account\V2\Model\RateTableDetails;
 use Ebay\Sell\Account\V2\Model\RateTableUpdate;
+use OpenAPI\Runtime\UnexpectedResponse;
 
 class Table extends AbstractAPI
 {
@@ -33,9 +34,9 @@ class Table extends AbstractAPI
      *                              list of all shipping rate tables defined for each marketplace and their
      *                              corresponding <b>rateTableId</b> values.</span>
      *
-     * @return RateTableDetails
+     * @return RateTableDetails|UnexpectedResponse
      */
-    public function get(string $rate_table_id): RateTableDetails
+    public function get(string $rate_table_id)
     {
         return $this->request(
         'getRateTable',
@@ -74,9 +75,9 @@ class Table extends AbstractAPI
      * @param RateTableUpdate $Model         request to update the shipping costs for the
      *                                       identified shipping rate table
      *
-     * @return mixed
+     * @return UnexpectedResponse
      */
-    public function updateShippingCost(string $rate_table_id, RateTableUpdate $Model): mixed
+    public function updateShippingCost(string $rate_table_id, RateTableUpdate $Model): UnexpectedResponse
     {
         return $this->request(
         'updateShippingCost',
